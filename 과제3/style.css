@@ -1,41 +1,90 @@
-/* 과제1, 2, 3, 4 폴더 안의 style.css에 각각 넣어주세요 */
+/* 과제 폴더 내부용 - 미술관 실감 디자인 */
 
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 스크롤바 안 생기게 차단 */
-  background-color: #e8e6e1; /* 메인 페이지와 똑같은 미술관 벽면 색상 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  
+  /* 💡 포인트: 중앙 조명(Spotlight) 효과 추가 */
+  background: radial-gradient(circle at center, #f5f3f0 0%, #e8e6e1 70%, #d1cfcb 100%);
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
 canvas {
-  display: block; /* p5.js 캔버스 주변의 불필요한 여백 제거 */
+  display: block;
+  /* 🖼️ 포인트: 두꺼운 액자와 강한 그림자로 입체감 부여 */
+  border: 15px solid #ffffff; /* 흰색 원목 액자 느낌 */
+  outline: 1px solid #ddd;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.3), /* 아래로 떨어지는 큰 그림자 */
+    0 10px 20px rgba(0, 0, 0, 0.1); /* 액자 바로 밑 그림자 */
+  margin-bottom: 40px; /* 안내판과의 간격 */
+  transition: transform 0.5s ease;
 }
 
-/* 🖼️ 뒤로가기 버튼: 미술관 작품 설명판(Plaque) 디자인 */
+/* 🖼️ 하단 작품 안내판 (Plaque) */
+.artwork-plaque {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 25px;
+  border-left: 5px solid #1a1a1a;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+  animation: fadeIn 1.5s ease;
+}
+
+.plaque-content .artist {
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.plaque-content .title {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.plaque-content .desc {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+/* 🔙 뒤로가기 버튼 (미니멀 아이콘 스타일) */
 .back-btn {
   position: absolute;
-  top: 30px;
-  left: 30px;
-  background: #1a1a1a; /* 진한 검은색 */
-  color: #ffffff;
-  padding: 12px 24px;
-  text-decoration: none; /* 밑줄 제거 */
-  font-family: sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  z-index: 100; /* p5.js 화면보다 무조건 위에 보이도록 설정 */
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  
-  /* 입체적인 딱딱한 그림자 */
-  box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
-  transition: all 0.2s ease;
+  top: 40px;
+  left: 40px;
+  width: 45px;
+  height: 45px;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0.5;
 }
 
-/* 마우스를 올렸을 때 효과 */
 .back-btn:hover {
-  background: #e63946; /* 바우하우스 포인트 레드 색상으로 변경 */
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+  opacity: 1;
+  transform: translateX(-5px);
+  background: #e63946;
+}
+
+/* 부드럽게 나타나는 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
