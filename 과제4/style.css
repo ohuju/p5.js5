@@ -1,10 +1,41 @@
-html, body {
+/* 과제1, 2, 3, 4 폴더 안의 style.css에 각각 넣어주세요 */
+
+body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 스크롤바 숨기기 */
-  background-color: #ffffff;
+  overflow: hidden; /* 스크롤바 안 생기게 차단 */
+  background-color: #e8e6e1; /* 메인 페이지와 똑같은 미술관 벽면 색상 */
 }
 
 canvas {
-  display: block; /* 블록 요소로 변경하여 미세한 하단 여백 제거 */
+  display: block; /* p5.js 캔버스 주변의 불필요한 여백 제거 */
+}
+
+/* 🖼️ 뒤로가기 버튼: 미술관 작품 설명판(Plaque) 디자인 */
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: #1a1a1a; /* 진한 검은색 */
+  color: #ffffff;
+  padding: 12px 24px;
+  text-decoration: none; /* 밑줄 제거 */
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 100; /* p5.js 화면보다 무조건 위에 보이도록 설정 */
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  
+  /* 입체적인 딱딱한 그림자 */
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
+
+/* 마우스를 올렸을 때 효과 */
+.back-btn:hover {
+  background: #e63946; /* 바우하우스 포인트 레드 색상으로 변경 */
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
 }
